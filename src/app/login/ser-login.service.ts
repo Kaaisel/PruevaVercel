@@ -15,7 +15,7 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class SerLoginService {
-  private baseUrl = 'http://localhost:3000'; // o tu backend en Vercel
+  private baseUrl = 'https://prueba-railway.vercel.app/';
 
   constructor(private http: HttpClient) { }
 

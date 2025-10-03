@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { environment } from '../environment/environment';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent {
 
   iniciarSesion() {
     // Llamada POST al backend
-    this.http.post<any>('http://localhost:3000/login', {
+    this.http.post<any>(`${environment.apiUrl}/login`, {
       nombre: this.usuario,
       cont: Number(this.contrasena)
     }).subscribe({

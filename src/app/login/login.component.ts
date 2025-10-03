@@ -21,7 +21,7 @@ export class LoginComponent {
 
   iniciarSesion() {
     // Llamada POST al backend
-    this.http.post<any>(`${environment.apiUrl}/login`, {
+    this.http.post<any>(`${environment.apiUrl}login`, {
       nombre: this.usuario,
       cont: Number(this.contrasena)
     }).subscribe({

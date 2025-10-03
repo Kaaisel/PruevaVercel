@@ -3,6 +3,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../environment/environment';
 
 interface LoginResponse {
   id: number;
@@ -14,8 +15,9 @@ interface LoginResponse {
 @Injectable({
   providedIn: 'root'
 })
+
 export class SerLoginService {
-  private baseUrl = 'https://prueba-railway.vercel.app/';
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 

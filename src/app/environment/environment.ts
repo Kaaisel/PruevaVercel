@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://mi-backend.vercel.app' // URL que Vercel te da
+  apiUrl: 'https://prueba-railway.vercel.app/' // URL que Vercel te da
 };

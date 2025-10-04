@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   background-color: #0a0a0a;
@@ -16,7 +17,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  padding: 1rem;
+ 
 }
 
 .inicio::before {
@@ -37,6 +39,7 @@ html, body {
   box-shadow: 0 0 40px rgba(200, 150, 50, 0.25);
   text-align: center;
   transition: all 0.3s ease;
+  max-width: 90%; 
 }
 
 .overlay:hover {
@@ -48,14 +51,43 @@ html, body {
 .titulo {
   font-family: 'Uncial Antiqua', cursive;
   color: #e8d9a6;
-  font-size: 3.5rem;
+   font-size: 3rem;
   text-shadow: 0 0 10px #c6a84b, 0 0 20px #7a6024;
 }
 
 .subtexto {
   font-family: 'Uncial Antiqua', cursive;
   color: #c8b87a;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-top: 1rem;
   opacity: 0.8;
+}
+
+/* --- Media Queries para pantallas pequeñas --- */
+@media (max-width: 768px) {
+  .titulo {
+    font-size: 2.2rem;
+  }
+
+  .overlay {
+    padding: 2rem 2rem;
+  }
+
+  .subtexto {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .titulo {
+    font-size: 1.8rem;
+  }
+
+  .subtexto {
+    font-size: 0.8rem;
+  }
+
+  .overlay {
+    padding: 1.5rem 1.5rem;
+  }
 }

@@ -1,3 +1,61 @@
-.inicio{
-    background-color: lightblue;
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #0a0a0a;
+  overflow: hidden;
+}
+
+.inicio {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.inicio::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.5), rgba(0, 0, 0, 0.95));
+  z-index: 0;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  background: rgba(30, 20, 10, 0.6);
+  padding: 3rem 4rem;
+  border: 2px solid #8a6f3d;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 40px rgba(200, 150, 50, 0.25);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.overlay:hover {
+  background: rgba(30, 20, 10, 0.7);
+  transform: scale(1.02);
+  box-shadow: 0 0 60px rgba(200, 150, 50, 0.4);
+}
+
+.titulo {
+  font-family: 'Uncial Antiqua', cursive;
+  color: #e8d9a6;
+  font-size: 3.5rem;
+  text-shadow: 0 0 10px #c6a84b, 0 0 20px #7a6024;
+}
+
+.subtexto {
+  font-family: 'Uncial Antiqua', cursive;
+  color: #c8b87a;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  opacity: 0.8;
 }

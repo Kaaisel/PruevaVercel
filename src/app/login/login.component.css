@@ -1,3 +1,135 @@
-.celda{
-    background-color: lightblue;
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+
+/* --- Fondo general --- */
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #0a0a0a;
+  overflow: hidden;
+}
+
+.inicio {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-image: url('https://images.unsplash.com/photo-1508264165352-258a6fdf63c7?auto=format&fit=crop&q=80&w=1920');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inicio::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.5), rgba(0, 0, 0, 0.95));
+  z-index: 0;
+}
+
+/* --- Cuadro central --- */
+.overlay {
+  position: relative;
+  z-index: 1;
+  background: rgba(30, 20, 10, 0.6);
+  padding: 3rem 4rem;
+  width: 420px;
+  border: 2px solid #8a6f3d;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 40px rgba(200, 150, 50, 0.25);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.overlay:hover {
+  background: rgba(30, 20, 10, 0.7);
+  transform: scale(1.02);
+  box-shadow: 0 0 60px rgba(200, 150, 50, 0.4);
+}
+
+/* --- Texto principal --- */
+.titulo {
+  font-family: 'Uncial Antiqua', cursive;
+  color: #e8d9a6;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px #c6a84b, 0 0 20px #7a6024;
+}
+
+/* --- Campos del formulario --- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  font-family: 'Uncial Antiqua', cursive;
+  color: #d8c47c;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 0 5px #7a6024;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 0.6rem;
+  border: 1px solid #6d5932;
+  border-radius: 0.3rem;
+  background: rgba(20, 15, 5, 0.85);
+  color: #f1e6c3;
+  font-family: 'Uncial Antiqua', cursive;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #c6a84b;
+  box-shadow: 0 0 12px #c6a84b;
+  background: rgba(30, 25, 10, 0.9);
+}
+
+/* --- Botón --- */
+.boton {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border: 2px solid #8a6f3d;
+  background: rgba(40, 30, 15, 0.9);
+  color: #e8d9a6;
+  font-family: 'Uncial Antiqua', cursive;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boton:hover {
+  background: #c6a84b;
+  color: #000;
+  box-shadow: 0 0 25px #c6a84b;
+  transform: scale(1.03);
+}
+
+/* --- Enlace de registro --- */
+.registro {
+  margin-top: 1.5rem;
+  color: #c8b87a;
+  font-family: 'Uncial Antiqua', cursive;
+  font-size: 1rem;
+}
+
+.registro a {
+  color: #e8d9a6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.registro a:hover {
+  color: #fff4cc;
 }

@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+
+/* --- Fondo general: ocupa toda la ventana --- */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Uncial Antiqua', cursive;
+  color: #e8d9a6;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh; /* asegura altura completa */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0a0a0a;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* --- Overlay oscuro sobre el fondo --- */
+body::before {
+  content: "";
+  position: fixed; /* cambia a fixed para cubrir toda la ventana siempre */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.5), rgba(0,0,0,0.95));
+  z-index: 0;
+}
+
+/* --- Contenedor de los botones: centrado en pantalla --- */
+div {
+  position: relative;
+  z-index: 1;
+  width: 400px;
+  max-width: 90%;
+  background: rgba(30, 20, 10, 0.6);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid #8a6f3d;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 40px rgba(200, 150, 50, 0.25);
+  transition: all 0.3s ease;
+}
+
+div:hover {
+  background: rgba(30, 20, 10, 0.7);
+  box-shadow: 0 0 60px rgba(200, 150, 50, 0.4);
+}
+
+/* --- Secciones --- */
+p {
+  font-size: 1.2rem;
+  margin: 1rem 0 0.5rem;
+  color: #d8c47c;
+  text-shadow: 0 0 5px #7a6024;
+}
+
+/* --- Botones --- */
+input[type="button"] {
+  width: 250px;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border: 2px solid #8a6f3d;
+  background: rgba(40, 30, 15, 0.9);
+  color: #e8d9a6;
+  font-family: 'Uncial Antiqua', cursive;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="button"]:hover {
+  background: #c6a84b;
+  color: #000;
+  box-shadow: 0 0 25px #c6a84b;
+  transform: scale(1.03);
+}
+
+/* --- Media Queries --- */
+@media (max-width: 768px) {
+  div {
+    width: 300px;
+    padding: 1.5rem;
+  }
+
+  input[type="button"] {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  div {
+    width: 250px;
+    padding: 1rem;
+  }
+
+  input[type="button"] {
+    width: 150px;
+  }
+}

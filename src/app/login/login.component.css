@@ -85,6 +85,7 @@ input[type="password"] {
   font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
+
 }
 
 input[type="text"]:focus,

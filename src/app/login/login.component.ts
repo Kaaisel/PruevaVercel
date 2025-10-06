@@ -26,11 +26,10 @@ export class LoginComponent {
       cont: Number(this.contrasena)
     }).subscribe({
       next: (res) => {
-        if (res.t_usuario === 'dungeonMaster') {
-          this.router.navigate(['dm']);
-        } else {
+        
           this.router.navigate(['usuario']);
-        }
+    
+      
       },
       error: (err) => {
         alert(err.error?.error || 'Usuario o contraseña incorrectos');

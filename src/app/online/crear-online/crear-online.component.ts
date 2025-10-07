@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-online',
@@ -8,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './crear-online.component.css'
 })
 export class CrearOnlineComponent {
+
+  constructor(private router:Router) { }
+  
+    entrarLobby(){
+      this.router.navigate(['lobby'])
+    }
 
 }

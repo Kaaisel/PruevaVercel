@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-usuario',
   standalone: true,
-  imports: [],
+  imports: [FormsModule,CommonModule],
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.css'
 })
@@ -29,4 +31,11 @@ export class UsuarioComponent {
     }
 
 
+
+    /* Ventana de carga*/
+
+    pSeleccionado:string = "Mikel";
+    cancelar(){
+      alert("Cancelar");
+    }
 }

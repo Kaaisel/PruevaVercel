@@ -9,6 +9,8 @@ import { UsuarioComponent } from './usuarios/usuario/usuario.component';
 import { DmComponent } from './usuarios/dm/dm.component';
 import { CargarPersonajeComponent } from './personaje/cargar-personaje/cargar-personaje.component';
 import { CrearPersonajeComponent } from './personaje/crear-personaje/crear-personaje.component';
+import { LobbyComponent } from './online/lobby/lobby.component';
+import { GameComponent } from './online/game/game.component';
 
 
 export const routes: Routes = [
@@ -23,6 +25,8 @@ export const routes: Routes = [
     /* Online */
     {path:"crearOnline", component:CrearOnlineComponent},
     {path:"unirseOnline",component:UnirseOnlineComponent},
+    {path:"lobby",component:LobbyComponent},
+    {path:"game",component:GameComponent},
 
     /* personajes */
     {path:"cargarPersonaje", component:CargarPersonajeComponent},

@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://prueba-railway.vercel.app/' 
+  // apiUrl: 'http://localhost:3000'
+   apiUrl: 'https://prueba-railway.vercel.app' 
 };

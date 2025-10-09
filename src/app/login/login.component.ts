@@ -14,29 +14,30 @@ import { AuthService } from '../auth/services/auth.services';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  usuario: string = '';
+  contrasena: string = '';
 
-  usuario = '';
-  contrasena = '';
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
-  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
+  ngOnInit(): void {
+    // Si el usuario vuelve al login, limpiamos todo
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.authService.logout(this.router);
+    }
+  }
 
   iniciarSesion() {
-    if (this.usuario.trim() !== "" && this.contrasena.trim() !== "") {
-
+    if (this.usuario.trim() && this.contrasena.trim()) {
       this.authService.login(this.usuario.trim(), this.contrasena.trim())
         .subscribe({
-          next: user => {
-            this.authService._auth = user; // Guardar usuario en el servicio
-            localStorage.setItem('token', '1'); // Simulación de token
-
-           
-            this.router.navigate(['./usuarios/usuario']);
-       
-          },
+          next: () => this.router.navigate(['./usuario']),
           error: err => {
-            console.error('Error en el login:', err.message);
+            console.error('Error en el login:', err);
             alert('Error en la autenticación: ' + err.message);
-          
           }
         });
     } else {

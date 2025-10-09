@@ -16,19 +16,19 @@
                 <form>
                     <div class="campo">
                         <label for="usuario">Usuario</label>
-                        <input type="text" id="usuario" name="usuario" [(ngModel)]="usuario" required>
+                        <input type="text" id="usuario" name="usuario" [(ngModel)]="usuario" required autocomplete="username">
                     </div>
 
                     <div class="campo">
                         <label for="contrasena">Contraseña</label>
-                        <input type="password" id="contrasena" name="contrasena" [(ngModel)]="contrasena" required>
+                        <input type="password" id="contrasena" name="contrasena" [(ngModel)]="contrasena" required autocomplete="current-password">
                     </div>
 
                     <input type="button" class="boton" value="Comenzar" (click)="iniciarSesion()">
                 </form>
 
                 <p class="registro">
-                    ¿No tienes cuenta? <a href="registro">Regístrate aquí</a>
+                    ¿No tienes cuenta? <a href="./auth/registro">Regístrate aquí</a>
                 </p>
             </div>
         </div>

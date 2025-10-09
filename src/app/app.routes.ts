@@ -15,33 +15,43 @@ import { authGuard } from './auth/auth.guards';
 
 
 export const routes: Routes = [
+  { path: "", redirectTo: "home", pathMatch: "full" },
 
-{path:"", redirectTo: "auth/home", pathMatch: "full"},
-{
-    path:'auth', children:[
-        {path:'home',component:HomeComponent},
-        {path:'login',component:LoginComponent},
-        {path:'registro',component:RegistroComponent},
-        {path:'**', redirectTo: 'login'}
+  // Página principal
+  { path: "home", component: HomeComponent },
+
+  // Autenticación
+  {
+    path: "auth",
+    children: [
+      { path: "login", component: LoginComponent },
+      { path: "registro", component: RegistroComponent },
+      { path: "**", redirectTo: "login" }
     ]
-},
-{
-    path:'usuarios', canActivate:[authGuard],
-    children:[
-    {path:"usuario", component:UsuarioComponent},
-    {path:"crearOnline", component:CrearOnlineComponent},
-    {path:"unirseOnline",component:UnirseOnlineComponent},
-    {path:"lobby",component:LobbyComponent},
-    {path:"game",component:GameComponent},
+  },
 
-    /* personajes */
-    {path:"cargarPersonaje", component:CargarPersonajeComponent},
-    {path:"crearPersonaje",component:CrearPersonajeComponent}
+  // Zona protegida de usuario
+  {
+    path: "usuario",
+    canActivate: [authGuard],
+    children: [
+      { path: "", component: UsuarioComponent },
 
+      // Online
+      { path: "crear-online", component: CrearOnlineComponent },
+      { path: "unirse-online", component: UnirseOnlineComponent },
+      { path: "lobby", component: LobbyComponent },
+      { path: "game", component: GameComponent },
+
+      // Personajes
+      { path: "cargar-personaje", component: CargarPersonajeComponent },
+      { path: "crear-personaje", component: CrearPersonajeComponent }
     ]
-}
-   
+  },
 
+  // Ruta comodín final
+  { path: "**", redirectTo: "home" }
 ];
+
 
 

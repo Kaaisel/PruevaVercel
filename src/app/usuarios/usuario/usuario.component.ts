@@ -15,19 +15,19 @@ export class UsuarioComponent {
   constructor(private router:Router) { }
   
     crearGrupo(){
-      this.router.navigate(['unirseOnline'])
+      this.router.navigate(['./usuario/unirse-online'])
     }
 
     unirseGrupo(){
-      this.router.navigate(['crearOnline'])
+      this.router.navigate(['./usuario/crear-online'])
     }
     
     cargarPersonaje(){
-      this.router.navigate(['cargarPersonaje'])
+      this.router.navigate(['./usuario/cargar-personaje'])
     }
 
     crearPersonaje() {
-      this.router.navigate(['crearPersonaje'])
+      this.router.navigate(['./usuario/crear-personaje'])
     }
 
 

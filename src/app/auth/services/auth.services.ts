@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environment/environment';
 import { Auth } from '../interface/auth';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { LoginRespuesta } from '../../interface/login-respuesta';
 import { Router } from '@angular/router';
 
@@ -22,49 +22,54 @@ export class AuthService {
 	public _auth!: Auth; // Solo un objeto Auth en vez de array
 	public verifica: boolean = false;
 
-	login(username: string, password: string): Observable<Auth> {
-		return this.http.post<LoginRespuesta>(this.baseUrl + 'login', { username, password })
+	login(nombre: string, cont: string): Observable<Auth> {
+		return this.http.post<Auth>(`${this.baseUrl}/login`, { nombre, cont })
 			.pipe(
 				map(response => {
-					if (response.success) {
-						this._auth = response.user!;  // Guarda el usuario en _auth
-						localStorage.setItem('usuario', JSON.stringify(this._auth)); // Guarda en localStorage
-						return response.user as Auth;
-					} else {
-						throw new Error(response.message || 'Error en la autenticación');
-					}
+					this._auth = response;
+					//Recordar nunca poner la contraseña real en el localStorage.
+					//
+					localStorage.setItem('usuario', JSON.stringify(this._auth.nombre));
+					localStorage.setItem('token', '1');
+					return response;
 				}),
 				catchError(err => {
 					console.error('Error en el login:', err);
-					return throwError(err);
+					return throwError(() => err);
 				})
 			);
 	}
 
-	verificaAutenticacion() {
-		this.verifica = false;
-		const miId = this._auth.id;
 
-		// Verificamos si existe el usuario en la base de datos
-		this.http.get<Auth>(this.baseUrl + 'usuarios/' + miId).subscribe({
-			next: resp => {
-				this._auth = resp; //volvemos a coger los datos del usuario
-				this.verifica = true;
-			},
-			error: () => { this.verifica = false; }
-		});
+	verificaAutenticacion(): Observable<boolean> {
+		const token = localStorage.getItem('token');
+		if (!token) return of(false);
 
-		if (localStorage.getItem('token')) {
-			return true; // si existe el token, entra.
+		// Verificar que el usuario guardado sigue existiendo
+		if (!this._auth?.id) {
+			const usuarioGuardado = localStorage.getItem('usuario');
+			if (usuarioGuardado) {
+				this._auth = JSON.parse(usuarioGuardado);
+			} else {
+				return of(false);
+			}
 		}
 
-		if (this.verifica) { return true } else { return false }
+		return this.http.get<Auth>(`${this.baseUrl}/usuarios/${this._auth.id}`)
+			.pipe(
+				map(resp => {
+					this._auth = resp;
+					return true;
+				}),
+				catchError(() => of(false))
+			);
 	}
+
 
 	logout(router: Router) {
 		this._auth != null;
 		localStorage.removeItem('token');
-		localStorage.removeItem('usuarioGuardado');
+		localStorage.removeItem('usuario');
 		router.navigate(['./auth/login']);
 	}
 

@@ -13,7 +13,7 @@ export class UnirseOnlineComponent {
     constructor(private router:Router) { }
     
       entrarLobby(){
-        this.router.navigate(['lobby'])
+        this.router.navigate(['./usuario/lobby'])
       }
       
 }

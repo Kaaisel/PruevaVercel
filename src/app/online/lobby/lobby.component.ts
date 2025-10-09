@@ -16,6 +16,6 @@ export class LobbyComponent {
 
   comenzar() {
     alert("Comenzar partida ");
-    this.router.navigate(['game'])
+    this.router.navigate(['./usuario/game'])
   }
 }

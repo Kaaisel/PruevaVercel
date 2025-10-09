@@ -11,18 +11,24 @@ import { CargarPersonajeComponent } from './personaje/cargar-personaje/cargar-pe
 import { CrearPersonajeComponent } from './personaje/crear-personaje/crear-personaje.component';
 import { LobbyComponent } from './online/lobby/lobby.component';
 import { GameComponent } from './online/game/game.component';
+import { authGuard } from './auth/auth.guards';
 
 
 export const routes: Routes = [
 
-
-    {path:'',component:HomeComponent},
-    {path:'login',component:LoginComponent},
-    {path:'registro',component:RegistroComponent},
-    {path:'usuario',component:UsuarioComponent},
-    {path:'dm',component:DmComponent},
-
-    /* Online */
+{path:"", redirectTo: "auth/home", pathMatch: "full"},
+{
+    path:'auth', children:[
+        {path:'home',component:HomeComponent},
+        {path:'login',component:LoginComponent},
+        {path:'registro',component:RegistroComponent},
+        {path:'**', redirectTo: 'login'}
+    ]
+},
+{
+    path:'usuarios', canActivate:[authGuard],
+    children:[
+    {path:"usuario", component:UsuarioComponent},
     {path:"crearOnline", component:CrearOnlineComponent},
     {path:"unirseOnline",component:UnirseOnlineComponent},
     {path:"lobby",component:LobbyComponent},
@@ -30,6 +36,12 @@ export const routes: Routes = [
 
     /* personajes */
     {path:"cargarPersonaje", component:CargarPersonajeComponent},
-    {path:"crearPersonaje",component:CrearPersonajeComponent},
+    {path:"crearPersonaje",component:CrearPersonajeComponent}
+
+    ]
+}
+   
 
 ];
+
+

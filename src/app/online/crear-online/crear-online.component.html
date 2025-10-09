@@ -11,9 +11,10 @@
 
     <!-- Celda para generar codigo --->
     <div>
-        <p>Generar codigo de invitacion</p>
-        <p></p>
-        <input type="button" value="Generar" (click)="entrarLobby()">
+        <p>Generar codigo de invitacion </p>
+        <p>{{codGenerado}}</p>
+        <input type="button" value="Generar" (click)="generar()">
+        <input type="button" value="Entrar" (click)="entrarLobby()">
     </div>
 
 
